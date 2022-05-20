@@ -20,7 +20,7 @@
 	<hr>
 	
 	<!-- Add a button -->
-	<a th:href="@{/employees/showFormForAdd}"
+	<a th:href="@{/users/userAdd}"
 		class="btn btn-primary btn-sm mb-3">
 		Add Employee
 	</a>
@@ -45,13 +45,13 @@
 				
 				<td>
 					<!-- Add "update" button/link -->
-					<a th:href="@{/employees/showFormForUpdate(employeeId=${tempUser.id})}"
+					<a th:href="@{/users/userUpdate(userId=${tempUser.id})}"
 					   class="btn btn-info btn-sm">
 						Update
 					</a>
 					
 					<!-- Add "delete" button/link -->					
-					<a th:href="@{/employees/delete(employeeId=${tempUser.id})}"
+					<a th:href="@{/users/delete(employeeId=${tempUser.id})}"
 					   class="btn btn-danger btn-sm"
 					   onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
 						Delete

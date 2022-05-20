@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.transportsystem.entity.User;
 import com.transportsystem.service.UserService;
@@ -29,4 +30,26 @@ public class UserController {
 		
 		return "/users/list-users";
 	}
+	
+	@GetMapping("/userAdd")
+	public String formForAdd(Model model) {
+		
+		User user = new User();
+		
+		model.addAttribute("user", user);
+		
+		return "users/user-form";
+	}
+	
+	@GetMapping("/userUpdate")
+	public String formForUpdate(@RequestParam("userId") int id, Model model) {
+		
+		User user = userService.findById(id);
+		
+		model.addAttribute("user", user);
+		
+		return "users/user-form";
+	}
+	
+	//@PostMapping("/save")
 }
