@@ -43,14 +43,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
-		
+		userRepository.save(user);
 	}
 
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
-		
+		userRepository.deleteById(id);
 	}
 	
 }

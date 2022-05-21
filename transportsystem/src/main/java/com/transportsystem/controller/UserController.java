@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -51,5 +53,23 @@ public class UserController {
 		return "users/user-form";
 	}
 	
-	//@PostMapping("/save")
-}
+	@PostMapping("/save")
+	public String saveUser(@ModelAttribute("user") User user) {
+		
+		// saving user
+		userService.save(user);
+		
+		// redirect to list
+		return "redirect:/users/list";
+	}
+	
+	@GetMapping("/delete")
+	public String deleteUser(@RequestParam("userId") int id) {
+		
+		// deleting user by id
+		userService.deleteById(id);
+		
+		//redirect to list
+		return "redirect:/users/list";
+	}
+}	
