@@ -21,8 +21,8 @@
 		
 		<p class="h4 mb-4">Save User</p>
 	
-		<form action="#" th:action="@{/users/save}"
-						 th:object="${user}" method="POST">
+		<form action="#" th:action="@{/employees/save}"
+						 th:object="${employee}" method="POST">
 		
 			<!-- Add hidden form field to handle update -->
 			<input type="hidden" th:field="*{id}" />
@@ -35,13 +35,16 @@
 
 			<input type="text" th:field="*{email}"
 					class="form-control mb-4 col-4" placeholder="Email">
-				
+					
+			<input type="text" th:field="*{phoneNumber}"
+					class="form-control mb-4 col-4" placeholder="Phone number">
+					
 			<button type="submit" class="btn btn-info col-2">Save</button>
 						
 		</form>
 	
 		<hr>
-		<a th:href="@{/users/list}">Back to Users List</a>
+		<a th:href="@{/employees/list}">Back to Users List</a>
 		
 	</div>
 </body>

@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="employee")
+public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_user")
+	@Column(name="id_employee")
 	private int id;
 	
 	@Column(name="first_name")
@@ -24,19 +24,23 @@ public class User {
 	
 	@Column(name="email")
 	private String email;
+	
+	@Column(name="phone_number")
+	private String phoneNumber;
 
 	
 	
-	public User() {
+	public Employee() {
 		
 	}
 
-	public User(int id, String firstName, String lastName, String email) {
+	public Employee(int id, String firstName, String lastName, String email, String phoneNumber) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 
 	public int getId() {
@@ -69,6 +73,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	@Override
