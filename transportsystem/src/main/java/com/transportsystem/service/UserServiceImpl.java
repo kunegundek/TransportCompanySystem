@@ -5,31 +5,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.transportsystem.dao.EmployeeRepository;
-import com.transportsystem.entity.Employee;
+import com.transportsystem.dao.UserRepository;
+import com.transportsystem.entity.User;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class UserServiceImpl implements UserService {
 
-	private EmployeeRepository userRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
-	public EmployeeServiceImpl(EmployeeRepository userRepository) {
+	public UserServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 	
 	@Override
-	public List<Employee> findAll() {
+	public List<User> findAll() {
 		return userRepository.findAll();
 	}
 
 	@Override
-	public Employee findById(int id) {
+	public User findById(int id) {
 		
-		Optional<Employee> result = userRepository.findById(id);
+		Optional<User> result = userRepository.findById(id);
 		
-		Employee user = null;
+		User user = null;
 		
 		if(result.isPresent()) {
 			user = result.get();
@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void save(Employee user) {
+	public void save(User user) {
 		userRepository.save(user);
 	}
 

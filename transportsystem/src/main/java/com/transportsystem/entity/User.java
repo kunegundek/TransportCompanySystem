@@ -8,38 +8,41 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="employee")
-public class Employee {
+@Table(name="users")
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_employee")
+	@Column(name="id_user")
 	private int id;
 	
-	@Column(name="first_name")
+	@Column(name="first_name", nullable = false, length = 2)
 	private String firstName;
 	
-	@Column(name="last_name")
+	@Column(name="last_name", nullable = false, length = 2)
 	private String lastName;
 	
-	@Column(name="email")
+	@Column(name="email", nullable = false, unique = true, length = 45)
 	private String email;
 	
-	@Column(name="phone_number")
+	@Column(name="password", nullable = false, length=64)
+	private String password;
+	
+	@Column(name="phone_number", length=9)
 	private String phoneNumber;
 
 	
 	
-	public Employee() {
+	public User() {
 		
 	}
 
-	public Employee(int id, String firstName, String lastName, String email, String phoneNumber) {
-		super();
+	public User(int id, String firstName, String lastName, String email, String password, String phoneNumber) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.password = password;
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -81,6 +84,16 @@ public class Employee {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	
+	
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
