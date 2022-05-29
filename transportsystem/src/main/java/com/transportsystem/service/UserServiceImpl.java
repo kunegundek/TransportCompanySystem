@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.transportsystem.dao.UserRepository;
 import com.transportsystem.entity.User;
+import com.transportsystem.exception.UserNotFoundException;
+
 import java.util.Optional;
 
 @Service
@@ -35,7 +37,7 @@ public class UserServiceImpl implements UserService {
 			user = result.get();
 		}
 		else {
-			throw new RuntimeException("Did not find user id - " + id);
+			throw new UserNotFoundException("Did not find user id - " + id);
 		}
 		
 		return user;
@@ -50,5 +52,37 @@ public class UserServiceImpl implements UserService {
 	public void deleteById(int id) {
 		userRepository.deleteById(id);
 	}
+
+	@Override
+	public User findByEmail(String email) {
+		
+		Optional<User> result = Optional.ofNullable(userRepository.findByEmail(email));
+	
+		User user = null;
+		
+		if(result.isPresent()) {
+			user = result.get();
+		}
+		else {
+			throw new UserNotFoundException("Did not find user with email " + email);
+		}
+		
+		return user;
+	}
+
+	@Override
+	public boolean userExists(String email) {
+		
+		User user = null;
+
+		user = this.findByEmail(email);
+	
+		if(user != null) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 	
 }
