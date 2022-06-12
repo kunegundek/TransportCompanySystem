@@ -1,9 +1,8 @@
-package com.transportsystem.service;
+package com.transportsystem.user.service;
 
 import java.util.List;
 
-import com.transportsystem.entity.User;
-import com.transportsystem.exception.UserNotFoundException;
+import com.transportsystem.user.entity.User;
 
 public interface UserService {
 
@@ -11,7 +10,7 @@ public interface UserService {
 	
 	public User findById(int id);
 	
-	public void save(User user);
+	public User save(User user);
 	
 	public void deleteById(int id);
 	

@@ -1,8 +1,8 @@
-package com.transportsystem.dao;
+package com.transportsystem.role.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.transportsystem.entity.Role;
+import com.transportsystem.role.entity.Role;
 
 public interface RoleRepository extends  JpaRepository<Role, Integer> {
 	

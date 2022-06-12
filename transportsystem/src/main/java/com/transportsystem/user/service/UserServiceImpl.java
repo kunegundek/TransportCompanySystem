@@ -1,15 +1,16 @@
-package com.transportsystem.service;
+package com.transportsystem.user.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.transportsystem.dao.UserRepository;
-import com.transportsystem.entity.User;
-import com.transportsystem.exception.UserNotFoundException;
+import com.transportsystem.user.entity.User;
+import com.transportsystem.user.repository.UserRepository;
 
 import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,23 +30,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(int id) {
 		
-		Optional<User> result = userRepository.findById(id);
-		
-		User user = null;
-		
-		if(result.isPresent()) {
-			user = result.get();
-		}
-		else {
-			throw new UserNotFoundException("Did not find user id - " + id);
-		}
-		
-		return user;
+		return userRepository.findById(id)
+					.orElseThrow(() -> new RuntimeException("Did not find user id - " + id));
 	}
 
 	@Override
-	public void save(User user) {
+	public User save(User user) {
 		userRepository.save(user);
+		
+		return user;
 	}
 
 	@Override
@@ -64,7 +57,7 @@ public class UserServiceImpl implements UserService {
 			user = result.get();
 		}
 		else {
-			throw new UserNotFoundException("Did not find user with email " + email);
+			throw new EntityNotFoundException("Did not find user with email " + email);
 		}
 		
 		return user;

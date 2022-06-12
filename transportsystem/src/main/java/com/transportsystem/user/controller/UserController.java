@@ -1,4 +1,4 @@
-package com.transportsystem.controller;
+package com.transportsystem.user.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.transportsystem.entity.User;
-import com.transportsystem.service.UserService;
+import com.transportsystem.user.entity.User;
+import com.transportsystem.user.service.UserService;
 
 @Controller
 @RequestMapping("/user")
@@ -58,7 +58,7 @@ public class UserController {
 	public String saveUser(@ModelAttribute("user") User user) {
 		
 		// saving user
-		userService.save(user);
+		User userSaved = userService.save(user);
 		
 		// redirect to list
 		return "redirect:/user/list";

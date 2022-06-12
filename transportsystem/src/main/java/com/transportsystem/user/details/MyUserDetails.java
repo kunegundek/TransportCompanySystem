@@ -1,4 +1,4 @@
-package com.transportsystem.user;
+package com.transportsystem.user.details;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,8 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.transportsystem.entity.Role;
-import com.transportsystem.entity.User;
+import com.transportsystem.role.entity.Role;
+import com.transportsystem.user.entity.User;
 
 public class MyUserDetails implements UserDetails {
 	

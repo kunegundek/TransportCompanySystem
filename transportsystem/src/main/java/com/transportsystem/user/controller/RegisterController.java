@@ -1,4 +1,4 @@
-package com.transportsystem.controller;
+package com.transportsystem.user.controller;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.transportsystem.entity.Role;
-import com.transportsystem.entity.User;
-import com.transportsystem.service.RoleService;
-import com.transportsystem.service.UserService;
+import com.transportsystem.role.entity.Role;
+import com.transportsystem.role.service.RoleService;
+import com.transportsystem.user.entity.User;
+import com.transportsystem.user.service.UserService;
 
 @Controller
 @ControllerAdvice
